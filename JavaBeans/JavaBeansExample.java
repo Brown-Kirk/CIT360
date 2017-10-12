@@ -1,40 +1,50 @@
 /** Pachakge to keep track whether or not a server has met its SLA regarding backups **/
 package backups;
 
+import java.io.Serializable;
 /** Class must be serializable **/
 public class ServerBean implements java.io.Serializable {
 
     /** Properties **/
     private boolean metSLA = false;
-
-    private List list;
-
-    /** Properties must be writable */
-    private String name = null;
-
-    /** Must have default constructor with no arguments */
+    private String serverName = null;
+	private String ipAddress = null;
+	
     public ServerBean() {
     }
 
-	/** Getter for complete list **/
-    public List getList() {
-        return list;
-    }
+	/**
+	 * @param serverName
+	 * @param ipAddress
+	**/
 	
-    public void setList(final List list) {
-        this.list = list;
-    }
-
-    /** Getter for Server Name **/
-    public String getName() {
-        return name;
+	public ServerBean(String serverName, String IpAddress, boolean metSLA) {
+		this.serverName = serverName;
+		this.IpAddress = IpAddress;
+		this.metSLA = metSLA;
+	}
+	
+	/** Getter for Server Name **/
+    public String getServerName() {
+        return serverName;
     }
 
     /** Setter for Server Name **/
-    public void setName(final String value) {
-        this.name = value;
+    public void setServerName(final String value) {
+        this.serverName = value;
     }
 
+	/** Getter for IP Address **/
+    public String getIpAddress() {
+        return ipAddress;
+    }
+
+    /** Setter for IP Address **/
+    public void setIpAddress(final String value) {
+        this.ipAddress = value;
+    }
+
+	
     /** Getter for Met SLA, which is a boolean value **/
     public boolean isMetSLA() {
         return metSLA;
