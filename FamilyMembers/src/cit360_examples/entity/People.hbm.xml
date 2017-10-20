@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 19, 2017 8:02:20 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="cit360_examples.entity.People" table="people" catalog="cit360_examples" optimistic-lock="version">
+        <id name="peopleId" type="java.lang.Integer">
+            <column name="people_id" />
+            <generator class="identity" />
+        </id>
+        <property name="peopleFirst" type="string">
+            <column name="people_first" length="45" not-null="true" />
+        </property>
+        <property name="peopleLast" type="string">
+            <column name="people_last" length="45" not-null="true" />
+        </property>
+        <property name="peopleSex" type="string">
+            <column name="people_sex" length="6" not-null="true" />
+        </property>
+        <set name="birthdays" table="birthday" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="people_people_id" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="cit360_examples.entity.Birthday" />
+        </set>
+    </class>
+</hibernate-mapping>
